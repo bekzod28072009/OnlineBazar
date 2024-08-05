@@ -35,5 +35,11 @@ namespace Bazar.Domain.Entities.Users
 
         public UserRole UserRole { get; set; } = UserRole.User;
 
+
+        public User()
+        {
+            Orders = new List<Order>();
+        }
+
     }
 }

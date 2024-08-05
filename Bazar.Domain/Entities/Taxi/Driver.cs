@@ -1,4 +1,6 @@
 ﻿using Bazar.Domain.Common;
+using Bazar.Domain.Entities.Others;
+using Bazar.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,20 @@ namespace Bazar.Domain.Entities.Taxi
 {
     public class Driver : Auditable
     {
+        public string Name { get; set; }
+
+        public UserRole UserRole { get; set; } = UserRole.Worker;
+
+        public int PhoneNumber { get; set; }
+
+        public string Email { get; set; }
+
+        public Address Address { get; set; }
+
+        public DriverStatus Status { get; set; }
+
+        public Orders Order { get; set; }
+
+        public string BankAccount { get; set; }
     }
 }

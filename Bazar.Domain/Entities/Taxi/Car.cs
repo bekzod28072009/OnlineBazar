@@ -9,5 +9,10 @@ namespace Bazar.Domain.Entities.Taxi
 {
     public class Car : Auditable
     {
+        public string Name { get; set; }
+
+        public int NumberOfCar { get; set; }
+
+        public string Design { get; set; }
     }
 }
