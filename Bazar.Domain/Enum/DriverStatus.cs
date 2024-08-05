@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Bazar.Domain.Enum
 {
-    public enum ItemState
+    public enum DriverStatus
     {
+        Start,
+        Comfort,
+        Electro,
+        MoreComfortable,
+        Business
     }
 }
