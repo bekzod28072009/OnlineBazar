@@ -8,6 +8,9 @@ namespace Bazar.Domain.Common
 {
     public class Auditable
     {
+        public int Id { get; set; }
+        public DateTime IsCteated { get; set; }
 
+        public DateTime? IsUpdated { get; set; }
     }
 }
