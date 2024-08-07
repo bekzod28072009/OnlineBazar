@@ -3,6 +3,8 @@ using Bazar.DataAcces.IRepository;
 using Bazar.Domain.Entities.Users;
 using Bazar.Service.DTOs.Users;
 using Bazar.Service.Exeptions;
+using Bazar.Service.Extensions;
+using Bazar.Service.Helpers;
 using Bazar.Service.IService;
 using System;
 using System.Collections.Generic;
@@ -37,31 +39,62 @@ namespace Bazar.Service.Service
 
             var createdUser = await repository.CreateAsync(mapper.Map<User>(entity));
 
-            createdUser.Password = createdUser.Password.
+            createdUser.Password = createdUser.Password.Ecrypt();
 
             await repository.SaveChangesAsync();
 
             return mapper.Map<UserForViewDto>(createdUser);
         }
 
-        public ValueTask<bool> DeleteAsync(Expression<Func<User, bool>> expression)
+        public async ValueTask<bool> DeleteAsync(Expression<Func<User, bool>> expression)
         {
-            throw new NotImplementedException();
+            var isDeleted = await repository.DeleteAsync(expression);
+
+            if (!isDeleted)
+                throw new OnlineBazarExeption(404, "User not found");
+
+            await repository.SaveChangesAsync();
+            return isDeleted;
         }
 
         public IEnumerable<UserForViewDto> GetAll(Expression<Func<User, bool>> expression = null, string[] includes = null)
         {
-            throw new NotImplementedException();
+            var users = repository.GetAll(expression: expression, includes: ["Image"]);
+
+            return mapper.Map<List<UserForViewDto>>(users);
         }
 
-        public ValueTask<UserForViewDto> GetAsync(Expression<Func<User, bool>> expression, string[] includes = null)
+        public async ValueTask<UserForViewDto> GetAsync(Expression<Func<User, bool>> expression, string[] includes = null)
         {
-            throw new NotImplementedException();
+            var user = await repository.GetAsync(expression, ["Image"]);
+
+            if (user is null)
+                throw new OnlineBazarExeption(404, "User not found");
+
+            return mapper.Map<UserForViewDto>(user);
         }
 
-        public ValueTask<UserForViewDto> Update(long id, UserForUpdateDto entity)
+        public async ValueTask<UserForViewDto> Update(long id, UserForUpdateDto entity)
         {
-            throw new NotImplementedException();
+            var existUser = await repository.GetAsync(
+               u => u.Id == id);
+
+            if (existUser == null)
+                throw new OnlineBazarExeption(404, "User not found");
+
+            var alreadyExistUser = await repository.GetAsync(
+                u => u.Email == entity.Email && u.Id != HttpContextHelper.UserId);
+
+            if (alreadyExistUser != null)
+                throw new OnlineBazarExeption(400, "User with such email already exists");
+
+
+            existUser.UpdatedAt = DateTime.UtcNow;
+            existUser.UpdatedBy = existUser.UpdatedBy is null ? 1 : existUser.UpdatedBy++;
+            existUser = repository.Update(mapper.Map(entity, existUser));
+            await repository.SaveChangesAsync();
+
+            return mapper.Map<UserForViewDto>(existUser);
         }
     }
 }

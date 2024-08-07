@@ -10,7 +10,7 @@ namespace Bazar.Domain.Common
     {
         public int Id { get; set; }
         public DateTime IsCteated { get; set; }
-
-        public DateTime? IsUpdated { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public long? UpdatedBy { get; set; }
     }
 }
