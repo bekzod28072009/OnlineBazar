@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,5 +30,7 @@ namespace Bazar.DataAcces.AppDBContexts
         public DbSet<Order> UserOrder { get; set; }    
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Attachment> attachments { get; set; }
     }
 }
