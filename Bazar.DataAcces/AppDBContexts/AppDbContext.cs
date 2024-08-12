@@ -17,20 +17,18 @@ namespace Bazar.DataAcces.AppDBContexts
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) 
         { }
 
-        public DbSet<Collector> collectors { get; set; }
+        public virtual DbSet<Collector> collectors { get; set; }
 
-        public DbSet<Address> addresses { get; set; }
+        public virtual DbSet<Address> addresses { get; set; }
 
-        public DbSet<Car> cars { get; set; }
+        public virtual DbSet<Car> cars { get; set; }
 
-        public DbSet<Driver> drivers { get; set; }
+        public virtual DbSet<Driver> drivers { get; set; }
 
-        public DbSet<Orders> DriverOrder { get; set; }
+        public virtual DbSet<Orders> DriverOrder { get; set; }
 
-        public DbSet<Order> UserOrder { get; set; }    
+        public virtual DbSet<Order> UserOrder { get; set; }    
 
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Attachment> attachments { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
