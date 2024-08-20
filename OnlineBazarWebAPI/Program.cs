@@ -10,8 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddDBConTextes(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddServices();
-
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddRepository();
 
 
 var app = builder.Build();

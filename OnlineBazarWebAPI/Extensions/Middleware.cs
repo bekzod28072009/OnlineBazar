@@ -19,17 +19,16 @@ namespace OnlineBazarWebAPI.Extensions
             services.AddDbContext<AppDbContext>(options =>
                  options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
         }
-        public static void AddServices(this IServiceCollection collection)
-        {
 
-            //Repositories
+        public static void AddRepository(this IServiceCollection collection)
+        {
             collection.AddTransient<IGenericRepository<User>, GenericRepository<User>>();
-            collection.AddTransient<IGenericRepository<Order>, GenericRepository<Order>>();
-            collection.AddTransient<IGenericRepository<Car>, GenericRepository<Car>>();
-            collection.AddTransient<IGenericRepository<Driver>, GenericRepository<Driver>>();
-            collection.AddTransient<IGenericRepository<Orders>, GenericRepository<Orders>>();
             collection.AddTransient<IGenericRepository<Collector>, GenericRepository<Collector>>();
             collection.AddTransient<IGenericRepository<Address>, GenericRepository<Address>>();
+            collection.AddTransient<IGenericRepository<Car>, GenericRepository<Car>>();
+            collection.AddTransient<IGenericRepository<Driver>, GenericRepository<Driver>>();
+            collection.AddTransient<IGenericRepository<Order>, GenericRepository<Order>>();
+            collection.AddTransient<IGenericRepository<Orders>, GenericRepository<Orders>>();
         }
     }
 }
