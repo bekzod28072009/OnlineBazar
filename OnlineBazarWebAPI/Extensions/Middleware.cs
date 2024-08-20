@@ -6,6 +6,8 @@ using Bazar.Domain.Entities.Others;
 using Bazar.Domain.Entities.Taxi;
 using Bazar.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 
 namespace OnlineBazarWebAPI.Extensions
