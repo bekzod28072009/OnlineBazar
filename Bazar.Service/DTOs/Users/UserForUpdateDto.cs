@@ -18,7 +18,7 @@ namespace Bazar.Service.DTOs.Users
         [Required, MaxLength(50)]
         public string Username { get; set; }
         public string Email { get; set; }
-        public AddressDto Address { get; set; }
+        public Address Address { get; set; }
         [MaxLength(200)]
         public string Bio { get; set; }
         [Required]
