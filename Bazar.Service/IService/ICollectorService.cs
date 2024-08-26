@@ -16,7 +16,7 @@ namespace Bazar.Service.IService
         IEnumerable<CollectorForViewDto> GetAll(Expression<Func<Collector, bool>> expression = null, string[] includes = null);
         ValueTask<CollectorForViewDto> GetAsync(Expression<Func<Collector, bool>> expression, string[] includes = null);
         ValueTask<CollectorForViewDto> CreateAsync(CollectorForCreationDto entity);
-        ValueTask<bool> DeleteAsync(Expression<Func<User, bool>> expression);
+        ValueTask<bool> DeleteAsync(Expression<Func<Collector, bool>> expression);
         ValueTask<CollectorForViewDto> Update(long id, CollectorForUpdateDto entity);
     }
 }
