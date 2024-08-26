@@ -17,6 +17,6 @@ namespace Bazar.Service.DTOs.Addresses
 
         [MaxLength(100)]
         public string AddressLine { get; set; }
-        public long UserId { get; set; }
+        public long UserId { get; set; } 
     }
 }
