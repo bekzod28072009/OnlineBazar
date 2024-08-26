@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bazar.Service.DTOs
+namespace Bazar.Service.DTOs.Drivers
 {
-    public class DriverDto
+    public class DriverForCreationDto
     {
         public string Name { get; set; }
 
@@ -19,7 +19,7 @@ namespace Bazar.Service.DTOs
 
         public string Email { get; set; }
 
-        public AddressDto Address { get; set; }
+        public Address Address { get; set; }
 
         public DriverStatus Status { get; set; }
 
