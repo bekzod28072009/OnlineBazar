@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bazar.Service.DTOs
+namespace Bazar.Service.DTOs.DriverOrderDto
 {
-    public class DriverOrderDto
+    public class DriverOrderCreationDto
     {
         public string NumberOfOrders { get; set; }
 
